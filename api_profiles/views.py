@@ -21,3 +21,14 @@ class GreetingAPIView(APIView):
 			message = f'Hey, how you doing {name}'
 			return Response({"messsage":message})
 		return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+	#Example of how to use the other HTTP requests using APIView:
+	def put(self,request.pk=None) #Primary key used as ID to update object by its ID
+		return Response({'HTTP Method':"PUT"})
+
+	def patch(self,request,pk=None):
+		return Response({'HTTP Method':"PATCH"})
+
+	def delete(self,request,pk=None):
+		return Response({'HTTP Method':"DELETE"})
+		
