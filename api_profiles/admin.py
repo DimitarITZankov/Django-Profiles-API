@@ -1,3 +1,4 @@
 from django.contrib import admin
+from api_profiles import models
 
-# Register your models here.
+admin.site.register(models.UserProfile)

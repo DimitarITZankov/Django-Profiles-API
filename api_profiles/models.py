@@ -15,7 +15,7 @@ class UserProfileManager(BaseUserManager):
 		return user
 
 	def create_superuser(self,username,name,email,password):
-		user = self.create_user(username,name,password)
+		user = self.create_user(username,name,email,password)
 		user.is_superuser = True
 		user.is_staff = True 
 		user.save(using=self._db)
@@ -32,7 +32,7 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
 	objects = UserProfileManager()
 
 	USERNAME_FIELD = 'username' #This is the field that will be used in the login section
-	REQUIRED_FIELDS = ['name','email']
+	REQUIRED_FIELDS = ['email','name']
 
 	#Helper Functions 
 	def get_full_name(self):
