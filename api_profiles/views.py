@@ -3,8 +3,14 @@ from rest_framework.views import APIView #Handling manual HTTP requests
 from rest_framework.response import Response #Handling the JSON output
 from rest_framework import status #Handles the statuses for the requests
 from rest_framework import viewsets #Automatically handles HTTP requests
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import filters
+from rest_framework.settings import api_settings
+from rest_framework.authtoken.views import ObtainAuthToken
 
 from api_profiles import serializers
+from api_profiles import models #Import the models so we can create proifle
+from api_profiles import permissions
 
 #Example of how to use APIView :
 class GreetingAPIView(APIView):
@@ -68,4 +74,16 @@ class GreetingViewSet(viewsets.ViewSet):
 		return Response({'HTTP Method':'DELETE'})
 
 
+class CreateUserProfileViewSet(viewsets.ModelViewSet):
+	#Handle creating and updating profiles
+	serializer_class = serializers.UserProfileSerializer
+	queryset = models.UserProfile.objects.all() #Default set of users
+	permission_classes = (permissions.UpdateOnlyOwnProfile,)
+	#Create a search bar
+	filter_backends = (filters.SearchFilter,)
+	search_fields = ('name','email','username',) #User can be searched by these fields
 
+
+class UserLoginAPIView(ObtainAuthToken):
+	#Handle creating user authentication tokens
+	renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
