@@ -23,7 +23,7 @@ class UserProfileManager(BaseUserManager):
 
 
 class UserProfile(AbstractBaseUser,PermissionsMixin):
-	username = models.CharField(max_length=30)
+	username = models.CharField(max_length=30,unique=True)
 	name = models.CharField(max_length=50)
 	email = models.EmailField(max_length=50)
 	is_active = models.BooleanField(default=True) #This is here in any case we need to deactivate any user
