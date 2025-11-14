@@ -31,26 +31,41 @@ SQLite (dev database)
 Optional Vagrant environment
 
 🔧 Installation
+
 git clone https://github.com/DimitarITZankov/Django-Profiles-API.git
+
 cd Django-Profiles-API
 
 Create virtual environment:
+
 python3 -m venv venv
+
 source venv/bin/activate
 
+
 Install dependencies:
+
 pip install -r requirements.txt
 
+
 Apply migrations:
+
 python manage.py migrate
 
+
 Create superuser:
+
 python manage.py createsuperuser
 
+
 Run the server:
+
 python manage.py runserver
+
 API is available at:
+
 http://127.0.0.1:8000/
+
 
 
 🗂️ Project Structure
