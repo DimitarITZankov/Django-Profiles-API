@@ -1,4 +1,4 @@
-# Django Profiles API
+# CURRENTLY WORKING ON THIS PROJECT - Django Profiles API
 
 A RESTful API built with Django and Django REST Framework to manage user profiles.
 Supports a custom user model, secure password handling, and full CRUD operations for user data.
